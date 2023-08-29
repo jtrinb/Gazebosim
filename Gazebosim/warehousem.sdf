@@ -1,0 +1,694 @@
+<sdf version='1.10'>
+  <world name='default'>
+    <gravity>0 0 -9.8000000000000007</gravity>
+    <magnetic_field>5.5644999999999998e-06 2.2875799999999999e-05 -4.2388400000000002e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.400000006 0.400000006 0.400000006 1</ambient>
+      <background>0.699999988 0.699999988 0.699999988 1</background>
+      <shadows>true</shadows>
+    </scene>
+    <model name='kuka_robot'>
+      <joint name='fixed_joint' type='fixed'>
+        <pose>1.3877787807814457e-17 0 0 0 0 0</pose>
+        <parent>world</parent>
+        <child>base_link</child>
+      </joint>
+      <link name='base_link'>
+        <pose>-0.17194000000000001 -0.00012799999999999999 -0.00059999999999999995 0 0 1.5700000000000001</pose>
+        <inertial>
+          <pose>-6.9852999999999996 8.7899999999999991 -3.7423999999999999 0 0 0</pose>
+          <mass>215.19999999999999</mass>
+          <inertia>
+            <ixx>160.66</ixx>
+            <ixy>-0.00016975000000000001</ixy>
+            <ixz>1.8303000000000001e-05</ixz>
+            <iyy>164.44</iyy>
+            <iyz>0.00040358000000000001</iyz>
+            <izz>4.4347000000000003</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose>-6.9852999999999996 8.7899999999999991 -3.7423999999999999 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/collision/base_link.dae</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose>-6.9852999999999996 8.7899999999999991 -3.7423999999999999 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.941174984 0.941174984 0.941174984 1</diffuse>
+            <ambient>0.941174984 0.941174984 0.941174984 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='joint0' type='prismatic'>
+        <pose>1.0408340855860843e-16 6.9388939039072284e-18 -8.3266726846886741e-17 0 0 0</pose>
+        <parent>base_link</parent>
+        <child>link0</child>
+        <axis>
+          <xyz>-5.5511151231257821e-17 0 -1</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>6.7199999999999998</upper>
+            <effort>87</effort>
+            <velocity>2</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+        <joint_name>joint0</joint_name>
+        <p_gain>1000</p_gain>
+        <i_gain>0</i_gain>
+        <d_gain>2000</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+      </plugin>
+      <link name='link0'>
+        <pose>-0.17194000000000001 -0.00012800000000004035 -0.00059999999999999962 1.5708000000000011 -5.5511151231257827e-17 1.5700000000000016</pose>
+        <inertial>
+          <pose>0 -0.41591818584779511 -0.75169629982627439 0 0 0</pose>
+          <mass>175.3578936475991</mass>
+          <inertia>
+            <ixx>67.27512685895752</ixx>
+            <ixy>0.09697281946662395</ixy>
+            <ixz>0.0063535023311252032</ixz>
+            <iyy>35.422257130272477</iyy>
+            <iyz>-29.04410445366852</iyz>
+            <izz>43.625474959445732</izz>
+          </inertia>
+        </inertial>
+        <collision name='link0_collision'>
+          <pose>0 -0.92300000000000004 -1.1499999999999999 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link0.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <collision name='link0_fixed_joint_lump__link1_collision_1'>
+          <pose>0 0 -0.42499999999999999 -1.5708 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link1.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link0_visual'>
+          <pose>0 -0.92300000000000004 -1.1499999999999999 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link0.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.941174984 0.941174984 0.941174984 1</diffuse>
+            <ambient>0.941174984 0.941174984 0.941174984 1</ambient>
+          </material>
+        </visual>
+        <visual name='link0_fixed_joint_lump__link1_visual_1'>
+          <pose>0 0 -0.42499999999999999 -1.5708 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link1.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.313725501 0.313725501 0.313725501 1</diffuse>
+            <ambient>0.313725501 0.313725501 0.313725501 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='joint2' type='revolute'>
+        <pose>3.8857805861880479e-16 5.5511151231257827e-16 5.5511151231257827e-17 0 0 0</pose>
+        <parent>link0</parent>
+        <child>link2</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-3.2288000000000001</lower>
+            <upper>3.2288000000000001</upper>
+            <effort>87</effort>
+            <velocity>1</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+        <joint_name>joint2</joint_name>
+        <p_gain>300</p_gain>
+        <i_gain>10</i_gain>
+        <d_gain>1000</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+      </plugin>
+      <link name='link2'>
+        <pose>-0.59693986524316367 0.00021043885205953802 0.21500156111216878 -2.0890541295553746e-16 6.2272857621272368e-16 1.5700000000000036</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>98.730549020406301</mass>
+          <inertia>
+            <ixx>2.7276547650151999</ixx>
+            <ixy>-0.29935370433321601</ixy>
+            <ixz>-0.116819636745328</ixz>
+            <iyy>4.8885128631381596</iyy>
+            <iyz>-0.091629054775720101</iyz>
+            <izz>4.1273535906571803</izz>
+          </inertia>
+        </inertial>
+        <collision name='link2_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link2.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link2_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link2.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>1 0.55392158 0.0392156877 1</diffuse>
+            <ambient>1 0.55392158 0.0392156877 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='joint3' type='revolute'>
+        <pose>-1.1102230246251565e-16 1.1102230246251565e-16 -3.3306690738754696e-16 -6.1629758220391547e-33 1.1102230246251565e-16 -1.1102230246251565e-16</pose>
+        <parent>link2</parent>
+        <child>link3</child>
+        <axis>
+          <xyz>1.1102230246251565e-16 1 0</xyz>
+          <limit>
+            <lower>-2.4434</lower>
+            <upper>-0.087265999999999996</upper>
+            <effort>30000</effort>
+            <velocity>1</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+        <joint_name>joint3</joint_name>
+        <p_gain>1</p_gain>
+        <i_gain>1</i_gain>
+        <d_gain>0</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+      </plugin>
+      <link name='link3'>
+        <pose>-0.59666115089440563 0.35021032787820283 0.67440156111216965 -5.1865151826678415e-12 1.5707000000020088 1.5699999999935552</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>96.011367102264899</mass>
+          <inertia>
+            <ixx>16.038214195289999</ixx>
+            <ixy>-0.0059018544727306201</ixy>
+            <ixz>-0.016557462662158001</ixz>
+            <iyy>15.8226274761063</iyy>
+            <iyz>1.75761423623246</iyz>
+            <izz>1.7596897688814299</izz>
+          </inertia>
+        </inertial>
+        <collision name='link3_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link3.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link3_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link3.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>1 0.55392158 0.0392156877 1</diffuse>
+            <ambient>1 0.55392158 0.0392156877 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='joint4' type='revolute'>
+        <pose>1.7763568394002505e-15 0 2.2204460492503131e-16 0 0 0</pose>
+        <parent>link3</parent>
+        <child>link4</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-2.0943900000000002</lower>
+            <upper>2.70526</upper>
+            <effort>3000</effort>
+            <velocity>1</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+        <joint_name>joint4</joint_name>
+        <p_gain>1000</p_gain>
+        <i_gain>1000</i_gain>
+        <d_gain>1000</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+      </plugin>
+      <link name='link4'>
+        <pose>-0.59574537518131543 1.5002099579144816 0.67451233692647106 -1.8488313529347099e-15 1.887788936845662e-15 1.5700000000000092</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>60.278291262752802</mass>
+          <inertia>
+            <ixx>0.61243853520078895</ixx>
+            <ixy>-0.105588814091561</ixy>
+            <ixz>0.080756616789298699</ixz>
+            <iyy>2.4691369935202498</iyy>
+            <iyz>0.026142729058195601</iyz>
+            <izz>2.3540064682369999</izz>
+          </inertia>
+        </inertial>
+        <collision name='link4_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link4.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link4_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link4.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>1 0.55392158 0.0392156877 1</diffuse>
+            <ambient>1 0.55392158 0.0392156877 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='joint5' type='revolute'>
+        <pose>1.7763568394002505e-15 -5.5511151231257827e-16 0 0 -3.944304526105059e-31 0</pose>
+        <parent>link4</parent>
+        <child>link5</child>
+        <axis>
+          <xyz>-1 0 -3.944304526105059e-31</xyz>
+          <limit>
+            <lower>-6.1086</lower>
+            <upper>6.1086</upper>
+            <effort>87</effort>
+            <velocity>1</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+        <joint_name>joint5</joint_name>
+        <p_gain>300</p_gain>
+        <i_gain>10</i_gain>
+        <d_gain>1000</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+      </plugin>
+      <link name='link5'>
+        <pose>-0.59523937326278142 2.1356297564430289 0.63351233692647158 -3.6976627131634487e-15 3.7755740961354509e-15 1.5700000000000174</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>11.8432893598542</mass>
+          <inertia>
+            <ixx>0.067004690787490107</ixx>
+            <ixy>-0.0015546237087895099</ixy>
+            <ixz>-1.82974182514097e-05</ixz>
+            <iyy>0.216054477297034</iyy>
+            <iyz>-1.9436079423847099e-08</iyz>
+            <izz>0.21555109712988699</izz>
+          </inertia>
+        </inertial>
+        <collision name='link5_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link5.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link5_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link5.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.941176474 0.941176474 0.941176474 1</diffuse>
+            <ambient>0.941176474 0.941176474 0.941176474 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='joint6' type='revolute'>
+        <pose>1.7763568394002505e-15 0 2.2204460492503131e-16 0 0 0</pose>
+        <parent>link5</parent>
+        <child>link6</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-2.1379999999999999</lower>
+            <upper>2.1379999999999999</upper>
+            <effort>87</effort>
+            <velocity>1</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+        <joint_name>joint6</joint_name>
+        <p_gain>300</p_gain>
+        <i_gain>10</i_gain>
+        <d_gain>1000</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+      </plugin>
+      <link name='link6'>
+        <pose>-0.59494904847058294 2.5002096408463186 0.63351233692647224 -7.3953254263269952e-15 7.5511481922709317e-15 1.5700000000000334</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>11.4950969694817</mass>
+          <inertia>
+            <ixx>0.119568542536202</ixx>
+            <ixy>0.027144332347250499</ixy>
+            <ixz>1.91936099336425e-05</ixz>
+            <iyy>0.11876273298869</iyy>
+            <iyz>1.39894480822994e-05</iyz>
+            <izz>0.17595919494837101</izz>
+          </inertia>
+        </inertial>
+        <collision name='link6_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link6.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link6_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link6.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.941176474 0.941176474 0.941176474 1</diffuse>
+            <ambient>0.941176474 0.941176474 0.941176474 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='joint7' type='revolute'>
+        <pose>1.3322676295501878e-15 -1.3322676295501878e-15 1.1102230246251565e-16 0 1.5777218104420236e-30 0</pose>
+        <parent>link6</parent>
+        <child>link7</child>
+        <axis>
+          <xyz>-1 0 1.5777218104420236e-30</xyz>
+          <limit>
+            <lower>-6.1086</lower>
+            <upper>6.1086</upper>
+            <effort>87</effort>
+            <velocity>1</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+        <joint_name>joint7</joint_name>
+        <p_gain>300</p_gain>
+        <i_gain>10</i_gain>
+        <d_gain>1000</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+      </plugin>
+      <link name='link7'>
+        <pose>-0.59483458446918125 2.643949595270938 0.63351233692647146 -1.4790650852654369e-14 1.5102296384541952e-14 1.5700000000000656</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>0.57764691465357798</mass>
+          <inertia>
+            <ixx>0.00360127041785051</ixx>
+            <ixy>-1.63277244110555e-07</ixy>
+            <ixz>7.9701963987246407e-08</ixz>
+            <iyy>0.00184298025359156</iyy>
+            <iyz>3.2246901579709398e-08</iyz>
+            <izz>0.00183989767460696</izz>
+          </inertia>
+        </inertial>
+        <collision name='link7_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link7.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link7_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/robot/Downloads/kuka_robot/meshes/link7.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>1 0.55392158 0.0392156877 1</diffuse>
+            <ambient>1 0.55392158 0.0392156877 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <frame name='joint1' attached_to='link0'>
+        <pose>0 0 -0.42499999999999999 -1.5708 0 0</pose>
+      </frame>
+      <frame name='link1' attached_to='joint1'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='joint8' attached_to='link7'>
+        <pose>0 0 0 0 1.5706999999997038 0</pose>
+      </frame>
+      <frame name='flange' attached_to='joint8'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <pose>0 2.4665599424045226e-18 -3.2526065174565133e-19 0 0 -2.2204460492503131e-16</pose>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='105m blade'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/robot/105m blade.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/robot/105m blade.dae</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>14.216899871826172 9.6839599609375 1.4414900541305546 1.5573971367235497 0.001305375737088771 -1.570920051413264</pose>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='warehouse_ground'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/robot/Gazebosim/warehouse_ground.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/robot/Gazebosim/warehouse_ground.dae</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-37.424026489257805 4.6921634674072266 -2.0337700843811035 0 0 1.5705199817792885</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='warehouse_top'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/robot/Gazebosim/warehouse_top.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/robot/Gazebosim/warehouse_top.dae</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-35.598701477050781 4.9219698905944824 -2.1286399364471436 0 0 1.569749989079021</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+  </world>
+</sdf>
